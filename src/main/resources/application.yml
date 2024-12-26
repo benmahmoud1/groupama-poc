@@ -1,0 +1,46 @@
+
+
+logging:
+  file.name: logs/application-debug.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.springframework.web: ERROR
+    com.howtodoinjava: DEBUG
+    org.hibernate: ERROR
+
+input:
+  datafile: data.csv
+
+spring:
+  datasource:
+    #url: jdbc:h2:mem:mydb
+    url: jdbc:mysql://localhost:3306/db-cgp
+    username: cgp
+    password: cgp
+    #driverClassName: org.h2.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      database-platform: org.hibernate.dialect.MySQL8Dialect
+      show-sql: true
+  h2:
+    console.enabled: true
+  batch:
+    jdbc:
+      initialize-schema: always
+    resourceDirectory: src/main/resources/input
+    chunkSize: 10
+    skipPolicy:
+      enabled: true
+      skipCount: 10000
+    job:
+        enabled: false
+file:
+  input: test.csv
+
+server:
+  port: 8081
+

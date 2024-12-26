@@ -1,0 +1,11 @@
+-> t_cas_valorisation.flux_maitre = 'CRE-ADMIN'
+SELECT *
+FROM vw_rivage_admin_gc
+WHERE statut_flx = 'CH';
+
+-> t_cas_valorisation.flux_maitre = 'CRE-COMPTA'
+SELECT *
+FROM vw_rivage_cpt_gc
+WHERE statut_flx = 'CH'
+;
+
